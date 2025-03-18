@@ -1,0 +1,882 @@
+/************************************************
+  0) ROOT + VARIABLES
+************************************************/
+:root {
+  /* Colors */
+  --color-bg-light: #fff;
+  --color-text-light: #000;
+  --color-bg-dark: #000;
+  --color-text-dark: #fff;
+
+  /* Font sizes (REM) */
+  --font-base-size: 16px;   /* 1rem = 16px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;     /* 16px */
+  --font-size-lg: 1.25rem;  /* 20px */
+  --font-size-xl: 1.5rem;   /* 24px */
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-xxs: 0.69rem; /* 10.4px - for smallest text elements */
+  
+  /* Layout & Grid */
+  --max-grid-width: 4000px; /* Maximum width for all grid containers */
+  
+  /* Spacing & Layout */
+  --spacing-grid-gap: 5px;        /* Espaçamento entre elementos do grid */
+  --spacing-image-margin: 0px;       /* Remove margens padrão das imagens */
+  --spacing-container-padding: 5px; /* Padding lateral dos contêineres */
+  --spacing-lg: 20px;
+  --spacing-md: 10px;
+  --spacing-xxxl: 40px;
+  --text-padding: 10px;          /* Standard padding for text elements */
+  --text-padding-mobile: 20px;   /* Mobile padding for text elements */
+  --project-gap: 300px;          /* Gap between projects */
+  --project-gap-mobile: 50px;    /* Gap between projects on mobile */
+  
+  /* Border Radius */
+  --radius-img: 24px;       /* Border radius para imagens e vídeos */
+  --radius-icon: 14px;      /* Border radius para ícones normais */
+  --radius-icon-large: 36px;/* Border radius para ícones grandes */
+  --radius-button: 24px;    /* Border radius para botões */
+}
+
+/************************************************
+  1) RESET & GLOBAL
+************************************************/
+html {
+  font-size: var(--font-base-size); /* => 1rem = 16px */
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: 'Inter_18pt-Regular', sans-serif;
+  font-size: var(--font-size-md);
+  line-height: 1.2;
+  background: var(--color-bg-light);
+  color: var(--color-text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+  margin: 0; /* Remove o user agent margin de 8px */
+}
+body.dark {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+/* Make sure any dark-mode backgrounds remain consistent */
+body.dark .section-grid p {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+body.dark .icon-caption {
+  color: var(--color-text-dark) !important;
+}
+p {
+  display: block;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+html, body {
+  overflow-x: hidden;
+}
+
+/* Links - cor preta em vez de azul */
+a {
+  color: var(--color-text-light);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+body.dark a {
+  color: var(--color-text-dark);
+}
+
+/************************************************
+  2) INTRO SECTION
+************************************************/
+.intro-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-container-padding);
+  box-sizing: border-box;
+  margin-left: 300px; 
+  scroll-snap-type: y mandatory;
+}
+
+/* Grid for the intro text blocks */
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-grid-gap);
+  align-items: start;
+  max-width: var(--max-grid-width);
+  margin: 0 auto;
+}
+
+.intro-grid p {
+  background: none;
+  padding: var(--text-padding); /* Using the global variable */
+  margin: 0;
+  line-height: 1.2;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.intro-para-1 {
+  font-size: 48px;
+  grid-column: span 3;
+}
+
+.intro-para-2 {
+  font-size: var(--font-size-md); /* 16px for secondary */
+  grid-column: span 1;
+  margin-top: 7px !important;
+}
+
+/* 
+  Intro bottom big text using viewport units 
+  (unchanged - you want them huge)
+*/
+.intro-bottom {
+  margin: 0 auto 24px auto;
+  max-width: var(--max-grid-width);
+  padding: var(--text-padding);
+  width: 100%;
+}
+
+/************************************************
+  3) CAROUSEL MENU
+************************************************/
+.carousel-menu {
+  position: fixed;
+  z-index: 999;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: -120px;
+  width: 400px;
+  height: 100vh;
+  transition:
+    top 0.8s ease,
+    left 0.8s ease,
+    width 0.8s ease,
+    height 0.8s ease,
+    transform 0.8s ease;
+}
+.carousel-menu.intro {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 60vh;
+}
+
+.carousel-container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  perspective: 1200px; 
+}
+.carousel-menu.intro .carousel-container {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.icon {
+  position: absolute;
+  width: 64px; 
+  height: 64px;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+.icon-img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-icon);
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.icon:hover .icon-img {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.icon.intro-size {
+  width: clamp(128px, 12vw, 320px);
+  height: clamp(128px, 12vw, 320px);
+}
+.icon.intro-size .icon-img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-icon-large);
+}
+
+.carousel-gradient {
+  display: none; /* hidden on desktop by default */
+}
+/************************************************
+  Icon Caption
+************************************************/
+.icon-caption {
+  position: absolute;
+  font-size: var(--font-size-xxs); /* Using the correct variable name */
+  line-height: 1.2em;
+  color: #333;
+  pointer-events: none;
+  width: 140px; /* layout px */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.icon-caption.desktop-position {
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.icon-caption.mobile-position {
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/************************************************
+  4) SECTION GRID & MEDIA LAYOUTS
+************************************************/
+.sections-container {
+  margin-top: var(--project-gap);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.sections-container.loaded {
+  opacity: 1;
+}
+
+.section {
+  margin: 0 auto var(--project-gap) auto;
+  padding: 0 var(--spacing-container-padding);
+  box-sizing: border-box;
+  scroll-margin-top: 100px;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-grid-gap);
+  max-width: var(--max-grid-width);
+  margin: 0 auto;
+}
+
+.section-grid p {
+  background: var(--color-bg-light);
+  padding: var(--text-padding);
+  margin: 0;
+  line-height: 1.2;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.section-title-info {
+  grid-column: span 1;
+  font-size: var(--font-size-md);
+}
+
+.section-description {
+  grid-column: span 3;
+  font-size: var(--font-size-md);
+}
+
+.section-why, .section-how {
+  grid-column: span 3;
+  font-size: var(--font-size-md);
+}
+
+.section-context-role {
+  grid-column: span 1;
+  font-size: var(--font-size-sm);
+}
+
+/* Media Elements */
+.section-grid img,
+.section-grid video,
+.section-grid .lottie-container {
+  width: 100%;
+  height: auto;
+  margin: var(--spacing-image-margin);
+  border-radius: var(--radius-img);
+  object-fit: cover;
+}
+
+/* Column Spans for Media */
+.img-1col, .video-1col {
+  grid-column: span 1;
+}
+.img-2col, .video-2col {
+  grid-column: span 2;
+}
+.img-3col, .video-3col {
+  grid-column: span 3;
+}
+.img-4col, .video-4col, .first-image {
+  grid-column: span 4;
+}
+
+/* Special class for first media item */
+.first-image {
+  margin-top: var(--spacing-lg);
+}
+
+/* Special class for height matching */
+.match-1col {
+  max-height: calc(100vw / 4 - var(--spacing-grid-gap));
+}
+.match-2col {
+  max-height: calc(100vw / 2 - var(--spacing-grid-gap));
+}
+.match-3col {
+  max-height: calc(3 * 100vw / 4 - var(--spacing-grid-gap));
+}
+.match-4col {
+  max-height: calc(100vw - 2 * var(--spacing-container-padding) - var(--spacing-grid-gap));
+}
+
+/************************************************
+  5) ABOUT SECTION
+************************************************/
+.about-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-container-padding);
+  box-sizing: border-box;
+  margin-top: 100px;
+  margin-left: 300px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-grid-gap);
+  align-items: start;
+  max-width: var(--max-grid-width);
+  margin: 0 auto;
+}
+
+.about-grid p {
+  background: none;
+  padding: var(--text-padding);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.about-para-1 {
+  font-size: var(--font-size-lg);
+  grid-column: span 2;
+}
+
+.about-para-2 {
+  font-size: var(--font-size-md);
+  grid-column: span 2;
+}
+
+.about-bottom {
+  margin: 0 auto 24px auto;
+  max-width: var(--max-grid-width);
+  padding: var(--text-padding);
+  width: 100%;
+}
+
+/************************************************
+  6) THEME TOGGLE & PERSONAL LOGO ICON
+************************************************/
+
+/* Top-left personal icon/logo */
+.top-left-icon {
+  position: fixed;
+  top: var(--spacing-lg);
+  left: var(--spacing-lg);
+  width: 64px;
+  height: 64px;
+  z-index: 1000;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  border-radius: var(--radius-icon);
+  overflow: hidden;
+}
+.top-left-icon:hover {
+  opacity: 1;
+}
+.top-left-icon-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Theme toggle */
+.theme-toggle-icon {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.theme-toggle-img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-icon);
+}
+.theme-toggle-caption {
+  display: none;
+}
+.theme-toggle-icon:hover .theme-toggle-caption {
+  display: block;
+  font-size: var(--font-size-xxs);
+  line-height: 1.2;
+}
+
+/************************************************
+  7) RESPONSIVE STYLES
+************************************************/
+@media screen and (max-width: 1200px) {
+  .intro-section, .about-section {
+    margin-left: 0;
+  }
+  
+  .section-title-info,
+  .section-context-role {
+    grid-column: span 4;
+  }
+  
+  .section-description,
+  .section-why,
+  .section-how {
+    grid-column: span 4;
+  }
+  
+  .intro-para-1 {
+    grid-column: span 4;
+    font-size: 32px;
+  }
+  
+  .intro-para-2 {
+    grid-column: span 4;
+  }
+  
+  .about-para-1,
+  .about-para-2 {
+    grid-column: span 4;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Intro section adjustments */
+  .intro-section, .about-section {
+    padding: var(--spacing-container-padding);
+  }
+  
+  .intro-para-1 {
+    font-size: 24px;
+  }
+  
+  /* Carousel adjustments */
+  .carousel-menu {
+    left: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .carousel-menu.intro {
+    width: 90vw;
+    height: 50vh;
+  }
+  
+  .carousel-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Add gradient overlay for horizontal scrolling indication */
+  .carousel-gradient {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      var(--color-bg-light) 0%,
+      rgba(255, 255, 255, 0) 10%,
+      rgba(255, 255, 255, 0) 90%,
+      var(--color-bg-light) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  body.dark .carousel-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--color-bg-dark) 0%,
+      rgba(0, 0, 0, 0) 10%,
+      rgba(0, 0, 0, 0) 90%,
+      var(--color-bg-dark) 100%
+    );
+  }
+  
+  /* Section adjustments */
+  .sections-container {
+    margin-top: var(--project-gap-mobile);
+  }
+  
+  .section {
+    margin-bottom: var(--project-gap-mobile);
+  }
+  
+  /* Media items adjustments */
+  .img-1col, .video-1col,
+  .img-2col, .video-2col,
+  .img-3col, .video-3col {
+    grid-column: span 4; /* All media takes full width on mobile */
+  }
+  
+  /* Fix aspect ratios for matching heights */
+  .match-1col, .match-2col, .match-3col, .match-4col {
+    max-height: none;
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Increased text padding for readability */
+  .section-grid p {
+    padding: var(--text-padding-mobile);
+  }
+  
+  /* Theme toggle and personal icon adjustments */
+  .top-left-icon {
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    width: 48px;
+    height: 48px;
+  }
+  
+  .theme-toggle-icon {
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+  
+  .theme-toggle-img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .intro-para-1 {
+    font-size: 20px;
+  }
+  
+  .intro-bottom, .about-bottom {
+    font-size: var(--font-size-sm);
+  }
+  
+  .top-left-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .theme-toggle-img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Reduce spacing to fit more content */
+  .section {
+    margin-bottom: 100px;
+  }
+  
+  .sections-container {
+    margin-top: 100px;
+  }
+}
+
+/************************************************
+  8) FONTS & TYPOGRAPHY
+************************************************/
+@font-face {
+  font-family: 'Inter_18pt-Regular';
+  src: url('https://res.cloudinary.com/dicwtd4pv/raw/upload/v1/portfolio/Inter_18pt-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/************************************************
+  9) ANIMATIONS & TRANSITIONS
+************************************************/
+/* Fade-in animation for sections */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Smooth transitions for theme changes */
+.section-grid p,
+.intro-grid p,
+.about-grid p {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/************************************************
+  10) ADMIN PAGE STYLES
+************************************************/
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-tab {
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-tab.active {
+  background: #333;
+  color: white;
+}
+
+.admin-panel {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+}
+
+.project-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.project-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.edit-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.media-items {
+  margin-top: 20px;
+}
+
+.media-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+.media-item img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.media-item-details {
+  flex-grow: 1;
+}
+
+.media-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.button-primary {
+  background: #0066cc;
+  color: white;
+}
+
+.button-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.button-danger {
+  background: #cc3300;
+  color: white;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive admin styles */
+@media (max-width: 768px) {
+  .edit-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .admin-projects {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Admin file upload */
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+
+.upload-area:hover {
+  border-color: #0066cc;
+}
+
+.upload-area input {
+  display: none;
+}
+
+.upload-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.upload-preview-item {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.upload-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.remove-preview {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #cc3300;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

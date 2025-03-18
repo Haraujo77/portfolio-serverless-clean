@@ -258,27 +258,39 @@
   // Function to load static content from the server
   async function loadStaticContent() {
     try {
-      // Fetch static content
-      const response = await fetch('js/static.json');
+      // First try to load from separate files
+      let introContent, aboutContent;
       
-      if (!response.ok) {
-        throw new Error(`Failed to load static content: ${response.status}`);
+      try {
+        const introResponse = await fetch('js/intro.json');
+        if (introResponse.ok) {
+          introContent = await introResponse.json();
+        }
+      } catch (e) {
+        console.warn('Failed to load intro.json:', e);
       }
       
-      const staticContent = await response.json();
+      try {
+        const aboutResponse = await fetch('js/about.json');
+        if (aboutResponse.ok) {
+          aboutContent = await aboutResponse.json();
+        }
+      } catch (e) {
+        console.warn('Failed to load about.json:', e);
+      }
       
       // Populate intro paragraphs
       const introPara1 = document.querySelector('.intro-para-1');
       const introPara2 = document.querySelector('.intro-para-2');
       
-      if (introPara1 && staticContent.intro && staticContent.intro.para1) {
-        introPara1.innerHTML = staticContent.intro.para1;
+      if (introPara1 && introContent && introContent.para1) {
+        introPara1.innerHTML = introContent.para1;
       } else {
         introPara1.innerHTML = `<strong>Hello!</strong> I'm Helder, a product designer with over 20 years of experience at the intersection of branding and UX/UI. I help founders and companies bring new ideas to life with a focus on usability, visual design, and meaningful interactions.`;
       }
       
-      if (introPara2 && staticContent.intro && staticContent.intro.para2) {
-        introPara2.innerHTML = staticContent.intro.para2;
+      if (introPara2 && introContent && introContent.para2) {
+        introPara2.innerHTML = introContent.para2;
       } else {
         introPara2.innerHTML = `I've worked with startups and established companies across healthcare, education, and consumer products. Scroll down to see selected projects or <a href="mailto:hello@helder.design">contact me</a> to discuss your next project.`;
       }
@@ -287,20 +299,20 @@
       const aboutPara1 = document.querySelector('.about-para-1');
       const aboutPara2 = document.querySelector('.about-para-2');
       
-      if (aboutPara1 && staticContent.about && staticContent.about.para1) {
-        aboutPara1.innerHTML = staticContent.about.para1;
+      if (aboutPara1 && aboutContent && aboutContent.para1) {
+        aboutPara1.innerHTML = aboutContent.para1;
       } else {
         aboutPara1.innerHTML = `<strong>My approach</strong> blends strategic thinking with a keen eye for aesthetics and usability. I believe great products solve real problems in ways that feel intuitive and delightful. My process focuses on understanding user needs, business goals, and technical constraints to create solutions that work on all levels.`;
       }
       
-      if (aboutPara2 && staticContent.about && staticContent.about.para2) {
-        aboutPara2.innerHTML = staticContent.about.para2;
+      if (aboutPara2 && aboutContent && aboutContent.para2) {
+        aboutPara2.innerHTML = aboutContent.para2;
       } else {
         aboutPara2.innerHTML = `I'm currently available for new projects and collaborations. If you'd like to work together, please reach out at <a href="mailto:hello@helder.design">hello@helder.design</a> or connect with me on <a href="https://www.linkedin.com/in/helderaraujo/" target="_blank">LinkedIn</a>.`;
       }
       
       // Set up the top-left icon/logo
-      setupHelderIcon(staticContent);
+      setupHelderIcon();
       
     } catch (error) {
       console.warn('Error loading static content, using defaults:', error.message);
@@ -316,7 +328,7 @@
   }
   
   // Setup the top-left personal icon/logo
-  function setupHelderIcon(staticContent) {
+  function setupHelderIcon() {
     if (helderIconVideo) {
       try {
         const videoUrl = 'https://res.cloudinary.com/dicwtd4pv/video/upload/v1/portfolio/helder-logo-animation.mp4';

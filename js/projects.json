@@ -1,0 +1,198 @@
+[
+  {
+    "name": "Cornerstone",
+    "category": "Education",
+    "year": 2024,
+    "icon": "img/icon_cornerstone.svg",
+    "description": "is a generative AI-powered solution from Cornerstone OnDemand that delivers personalized learning and development experiences. By analyzing individual skill gaps and career aspirations, the platform offers tailored recommendations, real-time guidance, and relevant resources to help employees grow in their roles.",
+    "why": "—In a workplace where continuous upskilling is crucial, Companion addresses the need for individualized support and efficient learning pathways. Rather than relying on static, one-size-fits-all content libraries, it harnesses AI to dynamically surface the most impactful training for each user, enabling organizations to boost productivity and engagement across teams.",
+    "how": "—The platform integrates seamlessly into existing workflows by analyzing data from performance reviews, role responsibilities, and learner preferences. Employees benefit from real-time skill-gap detection, while administrators can track engagement, configure learning paths, and measure program effectiveness—all within an intuitive, results-driven interface.",
+    "context": "Built for Cornerstone OnDemand.",
+    "team": "Collaborated with AI engineers and educators.",
+    "role": "Designed the user interface and experience.",
+    "hidden": 0,
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/cornerstone/Cornerstone-desktop.jpg",
+        "alt": "S4 4col",
+        "class": "first-image"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dicwtd4pv/video/upload/v1/portfolio/cornerstone/ConnectLive-FinalDelivery.mov",
+        "class": "video-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/cornerstone/Cornerstone-Cover.png",
+        "alt": "S4 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/cornerstone/Cornerstone-mobile.jpg",
+        "alt": "S4 1col",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1742144110/portfolio/placeholder_pkmwq9.jpg",
+        "alt": "placeholder",
+        "class": "img-3col",
+        "public_id": "portfolio/placeholder_pkmwq9"
+      }
+    ],
+    "id": 2,
+    "order_position": 1
+  },
+  {
+    "name": "Slip",
+    "category": "Retail",
+    "year": 2024,
+    "icon": "img/icon_slip.svg",
+    "description": "is a digital receipt solution that eliminates paper clutter and simplifies how users track their purchases, taxes, and returns. By integrating directly with major retailers and point-of-sale systems, Slip provides a seamless experience from checkout to receipt management—all in one convenient platform.",
+    "why": "—In an age where physical slips are easily lost or damaged, Slip addresses the need for a secure, organized repository of transaction records. Whether tracking warranties or calculating expenses, users can quickly access real-time purchase data and maintain a clear overview of spending habits without rummaging through piles of paper.",
+    "how": "—By leveraging robust POS integration and a user-friendly interface, Slip empowers both consumers and retailers to transition from manual receipt handling to streamlined, digital workflows. Users enjoy instant access to their purchase history, while retailers benefit from reduced waste and improved customer satisfaction—all within a frictionless, modern system.",
+    "context": "Designed to streamline receipt management.",
+    "team": "Worked with developers and retail experts.",
+    "role": "Led UX/UI design and prototyping.",
+    "hidden": 0,
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/slip/S3+2col.png",
+        "alt": "S3 2col",
+        "class": "img-2col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/slip/S3+1col.png",
+        "alt": "S3 1col",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/slip/S3+1col2.png",
+        "alt": "S3 1col2",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/slip/S3+3col.png",
+        "alt": "S3 3col",
+        "class": "img-3col"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dicwtd4pv/video/upload/v1/portfolio/ulife/ulife-scroll-profile.mp4",
+        "class": "video-3col match-1col"
+      }
+    ],
+    "id": 1,
+    "order_position": 2
+  },
+  {
+    "name": "Maria",
+    "category": "Healthcare",
+    "year": 2023,
+    "icon": "img/icon_maria.svg",
+    "description": "is a GenAI-driven health agent that redefines primary care by connecting patients with doctors, nutritionists, and psychologists through asynchronous conversations. This platform autonomously handles triage, streamlines case management, and automates over 50% of patient interactions, significantly boosting provider capacity.",
+    "why": "—By minimizing the manual workload of traditional telemedicine and in-person visits, Maria addresses the critical bottleneck of limited provider availability and prolonged wait times. Thanks to its efficient case handling, Maria has achieved a 98% customer satisfaction score (CSAT) and an 87% resolution rate—enabling physicians to manage up to ten times more patient interactions.",
+    "how": "—In designing Maria's workflow, I introduced a dynamic triage process driven by adaptive AI, implemented clear escalation paths for complex cases, and refined user interfaces to guide patients seamlessly. These innovations not only reduce friction for both patients and providers but also ensure swift, accurate handoffs when human expertise is needed.",
+    "context": "Redefining primary care with AI.",
+    "team": "Collaborated with healthcare professionals and AI specialists.",
+    "role": "Designed workflow and user interfaces.",
+    "hidden": 0,
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-cover.png",
+        "alt": "S8 4col",
+        "class": "first-image"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dicwtd4pv/video/upload/v1/portfolio/maria/Maria-heart-pumping-3.mov",
+        "class": "video-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-desktop.png",
+        "alt": "S8 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-branding.png",
+        "alt": "S8 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-product.png",
+        "alt": "S8 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/Maria-app-medications.png",
+        "alt": "S8 1col a",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-app-nutrition.png",
+        "alt": "S8 1col a",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-app-record.png",
+        "alt": "S8 1col a",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-app-Scheduling.png",
+        "alt": "S8 1col a",
+        "class": "img-1col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-hearts.png",
+        "alt": "S8 2col",
+        "class": "img-2col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-heart-bag.png",
+        "alt": "S8 2col",
+        "class": "img-2col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-graphics.png",
+        "alt": "S8 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dicwtd4pv/image/upload/v1/portfolio/maria/maria-social.png",
+        "alt": "S8 4col",
+        "class": "img-4col"
+      },
+      {
+        "type": "lottie",
+        "src": "https://res.cloudinary.com/dicwtd4pv/raw/upload/v1742153525/portfolio/maria_heart_Pumping_wcizos.json",
+        "alt": "maria_heart_Pumping",
+        "class": "lottie-container",
+        "public_id": "portfolio/maria_heart_Pumping_wcizos.json",
+        "data-preserve-aspect": "xMidYMid slice",
+        "style": "background: #F9F; grid-column: span 4; aspect-ratio: 3 / 2;"
+      }
+    ],
+    "id": 4,
+    "order_position": 4
+  }
+]

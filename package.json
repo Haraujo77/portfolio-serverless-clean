@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-serverless",
+  "version": "1.0.0",
+  "description": "Serverless Portfolio (Static HTML, CSS, JS files only)",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "serverless",
+    "static"
+  ],
+  "author": "Helder Araujo",
+  "license": "MIT",
+  "dependencies": {
+    "cloudinary": "^2.6.0",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "http": "0.0.1-security",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7"
+  }
+}
